@@ -1,0 +1,32 @@
+Classes 
+    - Employee  
+        - Name
+        - Role at company
+        - Phone
+        - Salary
+        - Years worked
+        - Active
+    - Departments
+        - Building Location
+        - Name
+        - Budget
+        - Phone
+        - Department Lead/Manager
+
+Possible Custom Exceptions
+    - Department Lead - still employed?
+    - Qualify for Lead position? 
+
+Java Stream
+    - Listing Employee info
+    - Department info
+
+File I/O
+    - file reader/writer for employee and department
+
+Plan of Attack
+- Build Classes
+- File input/output
+- Junit 
+- Main Driver
+    - 
