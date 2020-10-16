@@ -27,7 +27,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             ResultSet rs = pstmt.executeQuery();){
 
                 while(rs.next()){
-                    int id = rs.getInt("id");
+                    int id = rs.getInt("emp_id");
                     String firstName = rs.getString("first_name");
                     String lastName = rs.getString("last_name");
                     String phone = rs.getString("phone");
@@ -50,7 +50,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     @Override
     public Employee getEmployeeById(int id) throws EmployeeNotFoundException{
         ResultSet rs = null;
-		try(PreparedStatement pstmt = conn.prepareStatement("select * from employee where id = ?");
+		try(PreparedStatement pstmt = conn.prepareStatement("select * from employee where emp_id = ?");
 				) {
 			
 			pstmt.setInt(1, id);
@@ -87,14 +87,16 @@ public class EmployeeDAOImpl implements EmployeeDAO {
      @Override
     public boolean addEmployee(Employee emp) {
     
-        try(PreparedStatement pstmt = conn.prepareStatement("insert into employee(values(?,?,?,?,?,?)")) {
+        try(PreparedStatement pstmt = conn.prepareStatement("insert into employee(emp_id, first_name, last_name, dept_id, salary, phone, title) \n" + 
+        		"	value(null, ?, ?, ?, ?, ?, ?)")) {
             
             pstmt.setString(1, emp.getFirstName());
             pstmt.setString(2, emp.getLastName());
-            pstmt.setString(3, emp.getPhone());
-            pstmt.setString(4, emp.getTitle());
-            pstmt.setInt(5, emp.getSalary());
-            pstmt.setInt(6, emp.getDeptId());
+            pstmt.setInt(3, emp.getDeptId());
+            pstmt.setInt(4, emp.getSalary());
+            pstmt.setString(5, emp.getPhone());
+            pstmt.setString(6, emp.getTitle());
+            
 
 
             int count =  pstmt.executeUpdate();
@@ -103,7 +105,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             }
 
         }catch(SQLException e) {
-//			e.printStackTrace();
+			e.printStackTrace();
         }
         
         return false;
@@ -111,7 +113,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public boolean deleteEmployeeById(int id) {
-		try(PreparedStatement pstmt = conn.prepareStatement("delete employee where id = ?")) {
+		try(PreparedStatement pstmt = conn.prepareStatement("delete employee where emp_id = ?")) {
 			
 			pstmt.setInt(1, id);
 
