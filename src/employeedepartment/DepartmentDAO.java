@@ -6,7 +6,7 @@ public interface DepartmentDAO {
 
 	public List<Department> getAllDepartments();
 	
-	public Department getDepartmentById(int id);
+	public Department getDepartmentById(int id) throws DepartmentNotFoundException;
 	
 	public boolean addDepartment(Department dep);
 	

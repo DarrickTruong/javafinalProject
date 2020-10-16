@@ -48,7 +48,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
     }
 
     @Override
-    public Department getDepartmentById(int id) {
+    public Department getDepartmentById(int id) throws DepartmentNotFoundException {
         ResultSet rs = null;
 		try(PreparedStatement pstmt = conn.prepareStatement("select * from department where id = ?");
 				) {
@@ -80,7 +80,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 			}
         }
         
-        return null;
+        throw new DepartmentNotFoundException(id);
     }
 
     @Override
