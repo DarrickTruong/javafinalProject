@@ -13,4 +13,5 @@ public interface DepartmentDAO {
 	public boolean deleteDepartmentById(int id);
 	
 	public boolean updateDepartment(Department dep);
+	
 }

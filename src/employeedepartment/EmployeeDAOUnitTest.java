@@ -11,7 +11,7 @@ public class EmployeeDAOUnitTest {
 	
 	@Test
 	void addEmployee() {
-		Employee emp = new Employee("Darrick", "Troung", "4081230865", 50000, 2, "Professor", true, null);
+		Employee emp = new Employee("Darrick", "Truong", "4084440865", "Professor", 50000, 1);
 		employeeDAO.addEmployee(emp);
 		
 		List<Employee> employees = employeeDAO.getAllEmployees();
@@ -24,7 +24,17 @@ public class EmployeeDAOUnitTest {
 		String oldLastName = emp.getLastName();
 		emp.setLastName("Truong");
 		assertEquals(emp.getLastName().equals(oldLastName), false);
-		
-		
 	}
+	
+	@Test 
+	void deleteEmployee() {
+		List<Employee> employees = employeeDAO.getAllEmployees();
+		int length = employees.size();
+		
+		employeeDAO.deleteEmployeeById(1);
+		assert(employeeDAO.getAllEmployees().size() < length);
+	}
+	
+	
+	
 }
