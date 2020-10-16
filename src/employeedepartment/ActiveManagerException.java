@@ -9,7 +9,7 @@ public class ActiveManagerException extends Exception {
 	
 	public ActiveManagerException(Employee employee) {
 		
-		super(employee.getName() + " cannot be the manager as they are no longer employed.");
+		super(employee.getFirstName() + " " + employee.getLastName() + " cannot be the manager as they are no longer employed.");
 	}
 
 }
