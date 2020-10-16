@@ -48,7 +48,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public Employee getEmployeeById(int id) {
+    public Employee getEmployeeById(int id) throws EmployeeNotFoundException{
         ResultSet rs = null;
 		try(PreparedStatement pstmt = conn.prepareStatement("select * from employee where id = ?");
 				) {
@@ -70,7 +70,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 			}
 			
-
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -82,7 +81,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			}
         }
         
-        return null;
+        throw new EmployeeNotFoundException(id);
     }
 
      @Override
@@ -159,11 +158,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		return false;
     }
 
-    @Override
-    public Employee getEmployeeByName(String name) {
-        // TODO Auto-generated method stub
-        return null;
-    }
+    
 
 
 
