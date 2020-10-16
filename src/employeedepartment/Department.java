@@ -9,14 +9,14 @@ import java.util.stream.Stream;
 public class Department implements Comparable<Department>{
 	
 	private static ArrayList<String> nameList = new ArrayList<String>();
-	private static ArrayList<Employee> managerList = new ArrayList<Employee>();
+	private static ArrayList<OldEmployee> managerList = new ArrayList<OldEmployee>();
 	private String name;
 	private String address;
 	private String phone;
 	private int budget;
-	private Employee manager;
+	private OldEmployee manager;
 	
-	public Department(String name, String address, String phone, int budget, Employee manager) {
+	public Department(String name, String address, String phone, int budget, OldEmployee manager) {
 		super();
 		Scanner sc = new Scanner(System.in);
 		name = name.toUpperCase();
@@ -134,11 +134,11 @@ public class Department implements Comparable<Department>{
 		this.budget = budget;
 	}
 
-	public Employee getManager() {
+	public OldEmployee getManager() {
 		return manager;
 	}
 
-	public void setManager(Employee manager) {
+	public void setManager(OldEmployee manager) {
 		
 		
 		if (manager == null) {
@@ -189,7 +189,7 @@ public class Department implements Comparable<Department>{
 		return d1;
 	}
 	
-	public static void updateDepartment(Department department, String name, String address, String phone, int budget, Employee manager) {
+	public static void updateDepartment(Department department, String name, String address, String phone, int budget, OldEmployee manager) {
 		Scanner sc = new Scanner(System.in);
 		nameList.remove(department.getName());
 		
