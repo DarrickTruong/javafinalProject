@@ -1,19 +1,14 @@
 package employeedepartment;
 
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Stream;
-
 public class Employee {
 	
+		private int id;
 		private String firstName;
 		private String lastName;
 		private String phone;
 		private String title;
+		private int salary;
+		private int deptId;
 		
 		public Employee(String firstName, String lastName, String phone, String title, int salary, int deptId) {
 			super();
@@ -25,9 +20,7 @@ public class Employee {
 			this.deptId = deptId;
 		}
 		
-		private int salary;
-		private int deptId;
-
+		
 		public String getFirstName() {
 			return firstName;
 		}
@@ -65,11 +58,19 @@ public class Employee {
 			this.deptId = deptId;
 		}
 		
+		public int getId() {
+			return id;
+		}
+		public void setId(int id) {
+			this.id = id;
+		}
+		
 		@Override
 		public String toString() {
 			return "Employee [firstName=" + firstName + ", lastName=" + lastName + ", phone=" + phone + ", title="
 					+ title + ", salary=" + salary + ", deptId=" + deptId + "]";
 		}
+		
 		
 		
 		
