@@ -1,4 +1,4 @@
-package employeedepartment;
+package employeedepartment.main;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,6 +11,9 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import employeedepartment.main.models.Department;
+import employeedepartment.main.models.Employee;
 
 public class EmployeeDepartmentDriver {
 	

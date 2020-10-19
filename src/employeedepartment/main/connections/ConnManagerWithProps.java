@@ -1,4 +1,4 @@
-package employeedepartment;
+package employeedepartment.main.connections;
 
 import java.io.FileInputStream;
 import java.io.IOException;

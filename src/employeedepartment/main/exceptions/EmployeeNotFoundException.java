@@ -1,4 +1,4 @@
-package employeedepartment;
+package employeedepartment.main.exceptions;
 
 public class EmployeeNotFoundException extends Exception {
 	/**

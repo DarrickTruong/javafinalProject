@@ -1,4 +1,4 @@
-package employeedepartment;
+package employeedepartment.main.daos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,6 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import employeedepartment.main.connections.ConnManagerWithProps;
+import employeedepartment.main.exceptions.EmployeeNotFoundException;
+import employeedepartment.main.models.Employee;
 
 public class EmployeeDAOImpl implements EmployeeDAO {
 

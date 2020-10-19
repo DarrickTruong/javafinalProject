@@ -1,6 +1,9 @@
-package employeedepartment;
+package employeedepartment.main.daos;
 
 import java.util.List;
+
+import employeedepartment.main.exceptions.DepartmentNotFoundException;
+import employeedepartment.main.models.Department;
 
 public interface DepartmentDAO {
 

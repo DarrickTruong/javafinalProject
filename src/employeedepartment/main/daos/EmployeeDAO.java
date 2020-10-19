@@ -1,6 +1,9 @@
-package employeedepartment;
+package employeedepartment.main.daos;
 
 import java.util.List;
+
+import employeedepartment.main.exceptions.EmployeeNotFoundException;
+import employeedepartment.main.models.Employee;
 
 public interface EmployeeDAO {
 	
@@ -13,7 +16,6 @@ public interface EmployeeDAO {
 	public boolean deleteEmployeeById(int id);
 	
 	public boolean updateEmployee(Employee emp);
-	
 	
 
 }
