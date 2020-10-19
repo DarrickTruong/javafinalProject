@@ -159,7 +159,7 @@ public class EmployeeDepartmentDriver {
 							  System.out.println("Enter Department Budget");
 							  int budget = Integer.valueOf(sc.nextLine());
 							
-							  depDAO.addDepartment(new Department(name, address, phone, budget));
+							  depDAO.addDepartment(new Department(name, phone, budget));
 						      break;
 					case "3": System.out.println("What is the ID of the Department?");
 							  boolean broke = false;
