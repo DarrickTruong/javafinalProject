@@ -28,9 +28,9 @@ public class DepartmentDAOImpl implements DepartmentDAO {
             ResultSet rs = pstmt.executeQuery();){
 
                 while(rs.next()){
-                    int id = rs.getInt("id");
-                    String name = rs.getString("first_name");
-                    String address = rs.getString("last_name");
+                    int id = rs.getInt("dept_id");
+                    String name = rs.getString("dept_name");
+                    String address = rs.getString("dept_address");
                     String phone = rs.getString("phone");
                     int budget = rs.getInt("budget");
                     Department dept = new Department(name, address, phone, budget);
@@ -48,18 +48,18 @@ public class DepartmentDAOImpl implements DepartmentDAO {
     }
 
     @Override
-    public Department getDepartmentById(int id) throws DepartmentNotFoundException {
+    public Department getDepartmentById(int id) {
         ResultSet rs = null;
-		try(PreparedStatement pstmt = conn.prepareStatement("select * from department where id = ?");
+		try(PreparedStatement pstmt = conn.prepareStatement("select * from department where dept_id = ?");
 				) {
 			
 			pstmt.setInt(1, id);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-                int idFromDB = rs.getInt("id");
-                String name = rs.getString("first_name");
-                String address = rs.getString("last_name");
+                int idFromDB = rs.getInt("dept_id");
+                String name = rs.getString("dept_name");
+                String address = rs.getString("dept_address");
                 String phone = rs.getString("phone");
                 int budget = rs.getInt("budget");
                 Department dept = new Department(name, address, phone, budget);
@@ -80,7 +80,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 			}
         }
         
-        throw new DepartmentNotFoundException(id);
+        return null;
     }
 
     @Override
@@ -107,7 +107,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 
     @Override
     public boolean deleteDepartmentById(int id) {
-		try(PreparedStatement pstmt = conn.prepareStatement("delete department where id = ?")) {
+		try(PreparedStatement pstmt = conn.prepareStatement("delete department where dept_id = ?")) {
 			
 			pstmt.setInt(1, id);
 
@@ -122,6 +122,26 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 		
         return false;
     }
+
+
+    @Override
+    public boolean deleteDepartmentByName(String name) {
+		try(PreparedStatement pstmt = conn.prepareStatement("delete department where dept_name = ?")) {
+			
+			pstmt.setString(1, name);
+
+			int count =  pstmt.executeUpdate();
+			if(count > 0) {
+				return true;
+			}
+
+		}catch(SQLException e) {
+//			e.printStackTrace();
+		}
+		
+        return false;
+    }
+    
 
     @Override
     public boolean updateDepartment(Department dep) {
