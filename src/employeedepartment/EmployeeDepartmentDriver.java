@@ -154,8 +154,6 @@ public class EmployeeDepartmentDriver {
 						     break;
 					case "2": System.out.println("Enter Department Name:");
 							  String name = sc.nextLine();
-							  System.out.println("Enter Department Address:");
-							  String address = sc.nextLine();
 							  System.out.println("Enter Department Phone:");
 							  String phone = sc.nextLine();
 							  System.out.println("Enter Department Budget");
@@ -172,21 +170,17 @@ public class EmployeeDepartmentDriver {
 					        	  broke = true;
 					        	  break;
 					          } else {
-					        	  System.out.println("What variable would you like to edit? \nEnter 1: Name, 2:Address, "
-					        	  		+ "3:Phone, 4:Budget");
+					        	  System.out.println("What variable would you like to edit? \nEnter 1: Name, "
+					        	  		+ "3:Phone, 3:Budget");
 					        	  switch(str = sc.nextLine()) {
 					        	  case "1": System.out.println("Enter new name for Department:");
 					        	  			String name2 = sc.nextLine();
 					        	  			dep.setName(name2);
-					        	  case "2": System.out.println("Enter new address for Department:");
-					        	            String address2 = sc.nextLine();
-					        	            dep.setAddress(address2);
-					        	            break;
-					        	  case "3": System.out.println("Enter new phone for Department:");
+					        	  case "2": System.out.println("Enter new phone for Department:");
 					        	            String phone2 = sc.nextLine();
-					        	            dep.setAddress(phone2);
+					        	            dep.setPhone(phone2);
 					        	            break;
-					        	  case "4": System.out.println("Enter new budget for Department:");
+					        	  case "3": System.out.println("Enter new budget for Department:");
 					        	            int budget2 = Integer.valueOf(sc.nextLine());
 					        	            dep.setBudget(budget2);
 					        	            break;
