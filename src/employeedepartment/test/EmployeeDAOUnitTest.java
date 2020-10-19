@@ -1,4 +1,4 @@
-package employeedepartment;
+package employeedepartment.test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -10,6 +10,12 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import employeedepartment.main.connections.ConnManagerWithProps;
+import employeedepartment.main.daos.EmployeeDAO;
+import employeedepartment.main.daos.EmployeeDAOImpl;
+import employeedepartment.main.exceptions.EmployeeNotFoundException;
+import employeedepartment.main.models.Employee;
 
 public class EmployeeDAOUnitTest {
 	private EmployeeDAO employeeDAO = new EmployeeDAOImpl();

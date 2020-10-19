@@ -10,6 +10,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
+import employeedepartment.main.connections.ConnManagerWithProps;
+import employeedepartment.main.daos.DepartmentDAO;
+import employeedepartment.main.daos.DepartmentDAOImpl;
+import employeedepartment.main.models.Department;
+
 class DepartmentDAOUnitTest {
 	private DepartmentDAO deptDAO = new DepartmentDAOImpl();
 	private Connection conn = ConnManagerWithProps.getConnection();

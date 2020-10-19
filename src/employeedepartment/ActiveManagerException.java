@@ -1,5 +1,7 @@
 package employeedepartment;
 
+import employeedepartment.main.models.Employee;
+
 public class ActiveManagerException extends Exception {
 
 	/**

@@ -2,11 +2,10 @@ package employeedepartment.main.daos;
 
 import java.util.List;
 
-<<<<<<< HEAD:src/employeedepartment/EmployeeDAO.java
-=======
+
 import employeedepartment.main.exceptions.EmployeeNotFoundException;
 import employeedepartment.main.models.Employee;
->>>>>>> origin/DAOIMPL:src/employeedepartment/main/daos/EmployeeDAO.java
+
 
 public interface EmployeeDAO {
 	
@@ -20,10 +19,8 @@ public interface EmployeeDAO {
 	
 	public boolean updateEmployee(Employee emp);
 	
-<<<<<<< HEAD:src/employeedepartment/EmployeeDAO.java
+
 	
 }
-=======
 
-}
->>>>>>> origin/DAOIMPL:src/employeedepartment/main/daos/EmployeeDAO.java
+
