@@ -43,8 +43,4 @@ public class ConnManagerWithProps {
 		
 	}
 }
-<<<<<<< HEAD
 
-
-=======
->>>>>>> origin/cody-branch

@@ -77,13 +77,4 @@ public class Employee {
 	}
 	
 	
-	
-	
-	
-<<<<<<< HEAD
-	
-	
 
-=======
-	
->>>>>>> origin/cody-branch
