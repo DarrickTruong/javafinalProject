@@ -12,7 +12,6 @@ public interface DepartmentDAO {
 
 	public Department getDepartmentById(int id) throws DepartmentNotFoundException;
 
-	
 	public boolean addDepartment(Department dep);
 	
 	public boolean deleteDepartmentById(int id);
