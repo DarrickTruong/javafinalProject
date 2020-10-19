@@ -47,7 +47,6 @@ public class EmployeeDAOUnitTest {
 			assertFalse(emp.getLastName().equals(oldLastName));
 			
 		} catch (EmployeeNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.getMessage();
 		}
 	}
@@ -57,7 +56,6 @@ public class EmployeeDAOUnitTest {
 		try {
 			conn.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

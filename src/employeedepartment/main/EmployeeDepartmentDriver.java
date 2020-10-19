@@ -56,7 +56,6 @@ public class EmployeeDepartmentDriver {
 								try {
 									dep = depDAO.getDepartmentById(depID);
 								} catch (DepartmentNotFoundException e1) {
-									// TODO Auto-generated catch block
 									e1.printStackTrace();
 								}
 								  if (dep == null) {
@@ -71,7 +70,6 @@ public class EmployeeDepartmentDriver {
 								try {
 									emp = empDAO.getEmployeeById(id2);
 								} catch (EmployeeNotFoundException e1) {
-									// TODO Auto-generated catch block
 									e1.printStackTrace();
 								}
 						          
@@ -108,7 +106,6 @@ public class EmployeeDepartmentDriver {
 												try {
 													dep2 = depDAO.getDepartmentById(depID);
 												} catch (DepartmentNotFoundException e1) {
-													// TODO Auto-generated catch block
 													e1.printStackTrace();
 												}
 											    if (dep2 == null) {
@@ -135,7 +132,6 @@ public class EmployeeDepartmentDriver {
 									try {
 										emp2 = empDAO.getEmployeeById(id3);
 									} catch (EmployeeNotFoundException e1) {
-										// TODO Auto-generated catch block
 										e1.printStackTrace();
 									}
 		                          
@@ -191,7 +187,6 @@ public class EmployeeDepartmentDriver {
 									try {
 										dep = depDAO.getDepartmentById(depID);
 									} catch (DepartmentNotFoundException e1) {
-										// TODO Auto-generated catch block
 										e1.printStackTrace();
 									}
 						          if (dep == null) {
@@ -230,7 +225,6 @@ public class EmployeeDepartmentDriver {
 									  try {
 										dep = depDAO.getDepartmentById(depID);
 									} catch (DepartmentNotFoundException e) {
-										// TODO Auto-generated catch block
 										e.printStackTrace();
 									}
 							          if (dep == null) {
@@ -263,7 +257,6 @@ public class EmployeeDepartmentDriver {
 		}
 
 		public static void main(String[] args) {
-			// TODO Auto-generated method stub
 			Scanner sc = new Scanner(System.in);
 
 			databaseSystem(sc);
