@@ -1,5 +1,6 @@
 package employeedepartment;
 
+<<<<<<< HEAD
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -142,4 +143,9 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 		
 	}
     
+=======
+public class DepartmentDAOImpl
+{
+
+>>>>>>> origin/cody-branch
 }
