@@ -126,7 +126,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 
     @Override
     public boolean deleteDepartmentByName(String name) {
-		try(PreparedStatement pstmt = conn.prepareStatement("delete department where dept_name = ?")) {
+		try(PreparedStatement pstmt = conn.prepareStatement("delete from department where dept_name = ?")) {
 			
 			pstmt.setString(1, name);
 
