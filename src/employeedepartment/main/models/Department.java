@@ -1,4 +1,4 @@
-package employeedepartment;
+package employeedepartment.main.models;
 
 
 public class Department {
