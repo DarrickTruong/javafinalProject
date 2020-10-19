@@ -5,7 +5,6 @@ public class Department {
 	
 	private int id;
 	private String name;
-	private String address;
 	private String phone;
 	private int budget;
 	
@@ -61,7 +60,7 @@ public class Department {
 
 	@Override
 	public String toString() {
-		return "Department [id=" + id + ", name=" + name + ", address=" + address + ", phone=" + phone + ", budget="
+		return "Department [id=" + id + ", name=" + name + ", phone=" + phone + ", budget="
 				+ budget + "]";
 	}
 

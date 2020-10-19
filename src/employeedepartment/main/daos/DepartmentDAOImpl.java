@@ -84,7 +84,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 	public boolean addDepartment(Department dept) {
 
 
-		try(PreparedStatement pstmt = conn.prepareStatement("insert into department values(null,?,?,?))")) {
+		try(PreparedStatement pstmt = conn.prepareStatement("insert into department values(null,?,?,?)")) {
 			
 			pstmt.setString(1, dept.getName());
 			pstmt.setString(2, dept.getPhone());
@@ -103,9 +103,13 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 
 	@Override
 	public boolean deleteDepartmentById(int deptId) {
-		try(PreparedStatement pstmt = conn.prepareStatement("delete from department where dept_id=?")) {
+		try(PreparedStatement pstmt = conn.prepareStatement("delete from department where dept_id=?");
+				PreparedStatement pstmt2 = conn.prepareStatement("update employee set dept_id=null where dept_id=?")) {
 			
 			pstmt.setInt(1, deptId);
+			pstmt2.setInt(1, deptId);
+			
+			pstmt2.executeUpdate();
 						
 			int count = pstmt.executeUpdate();
 			if(count > 0) {
@@ -142,10 +146,10 @@ public class DepartmentDAOImpl implements DepartmentDAO {
     @Override
     public boolean updateDepartment(Department dep) {
         try(PreparedStatement pstmt = conn.prepareStatement("update department "
-                                                               +  "set name = ?, "
-                                                                + "phone = ?, "
+                                                               +  "set dept_name = ?, "
+                                                                + "dept_phone = ?, "
                                                                 + "budget = ? "
-                                                                + "WHERE id = ?")) {
+                                                                + "WHERE dept_id = ?")) {
 			
             pstmt.setString(1, dep.getName());
             pstmt.setString(2, dep.getPhone());

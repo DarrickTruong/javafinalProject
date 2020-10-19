@@ -102,7 +102,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
      @Override
     public boolean addEmployee(Employee emp) {
     
-
+    	System.out.println("employee " +emp);
         try(PreparedStatement pstmt = conn.prepareStatement("insert into employee(emp_id, first_name, last_name, dept_id, salary, phone, title) \n" + 
         		"	value(null, ?, ?, ?, ?, ?, ?)")) {
             
@@ -112,11 +112,12 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             pstmt.setInt(4, emp.getSalary());
             pstmt.setString(5, emp.getPhone());
             pstmt.setString(6, emp.getTitle());
-           
+            
+            pstmt.executeUpdate();
+            return true;
 
         }catch(SQLException e) {
 			e.printStackTrace();
-
         }
         
         return false;
@@ -124,8 +125,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public boolean deleteEmployeeById(int id) {
-
-		try(PreparedStatement pstmt = conn.prepareStatement("delete employee where emp_id = ?")) {
+//    	System.out.println("id " + id);
+		try(PreparedStatement pstmt = conn.prepareStatement("delete from employee where emp_id = ?")) {
 
 			
 			pstmt.setInt(1, id);
@@ -144,21 +145,15 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public boolean updateEmployee(Employee emp) {
+    	System.out.println("employee " + emp);
         try(PreparedStatement pstmt = conn.prepareStatement("update employee "
                                                                +  "set first_name = ?, "
                                                                 + "last_name = ?, "
-
-                                                                + "dept_id = ? "
+                                                                + "dept_id = ?, "
                                                                 + "salary = ?, "
                                                                 + "phone = ?, "
-                                                                + "title = ?, "
-
-                                                                + "phone = ?, "
-                                                                + "title = ?, "
-                                                                + "salary = ?, "
-                                                                + "dept_id = ? "
-
-                                                                + "WHERE id = ?")) {
+                                                                + "title = ? "
+                                                                + "WHERE emp_id = ?")) {
 			
             pstmt.setString(1, emp.getFirstName());
             pstmt.setString(2, emp.getLastName());

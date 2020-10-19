@@ -36,8 +36,7 @@ public class EmployeeDepartmentDriver {
 								  }
 								  break;
 								  
-						case "2": System.out.println("Enter Employee ID:");
-								  int id = Integer.valueOf(sc.nextLine());
+						case "2": 
 								  System.out.println("Enter Employee First Name:");
 								  String firstName = sc.nextLine();
 								  System.out.println("Enter Employee Last Name:");
@@ -46,8 +45,6 @@ public class EmployeeDepartmentDriver {
 								  String phone = sc.nextLine();
 								  System.out.println("Enter Employee Salary");
 								  int salary = Integer.valueOf(sc.nextLine());
-								  System.out.println("Enter years worked:");
-								  int yearsWorked = Integer.valueOf(sc.nextLine());
 								  System.out.println("Enter Employee Title:");
 								  String title = sc.nextLine();
 								  System.out.println("Enter the Department id:");
@@ -128,6 +125,7 @@ public class EmployeeDepartmentDriver {
 						        		  empDAO.updateEmployee(emp);  
 						        	  }
 						          }
+						          break;
 						case "4": 
 								  System.out.println("What is the Id of the employee?");
 		                          int id3 = Integer.valueOf(sc.nextLine());
@@ -158,7 +156,9 @@ public class EmployeeDepartmentDriver {
 						case "1": System.out.println("Would you like to see a list of Departments or Employees by Departments?"
 								+"\nEnter 1:List of Departments, 2:Employees by Department");
 							     switch(str = sc.nextLine()) {
-							     case "1": depDAO.getAllDepartments();
+							     case "1": for (Department d:depDAO.getAllDepartments()) {
+							    	 			System.out.println(d);
+							     			}
 							     		   break;
 							     case "2": for (Department dep : depDAO.getAllDepartments()) {
 											System.out.println("\n" + dep.getName());
@@ -205,6 +205,7 @@ public class EmployeeDepartmentDriver {
 						        	  case "1": System.out.println("Enter new name for Department:");
 						        	  			String name2 = sc.nextLine();
 						        	  			dep.setName(name2);
+						        	  			break;
 						        	  case "2": System.out.println("Enter new phone for Department:");
 						        	            String phone2 = sc.nextLine();
 						        	            dep.setPhone(phone2);
