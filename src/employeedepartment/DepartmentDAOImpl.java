@@ -7,136 +7,122 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class DepartmentDAOImpl implements DepartmentDAO {
+	
+	private Connection conn = ConnManagerWithProps.getConnection();
+	
+	@Override
+	public List<Department> getAllDepartments() {
+		
+		List<Department> deptList = new ArrayList<>();
+		
+		try (PreparedStatement pstmt = conn.prepareStatement("select * from department");
+				ResultSet rs = pstmt.executeQuery();) {
 
-
-    private Connection conn = ConnManagerWithProps.getConnection();
-
-        
-    // private int id;
-	// private String name;
-	// private String address;
-	// private String phone;
-    // private int budget;
-
-    @Override
-    public List<Department> getAllDepartments() {
-        List<Department> deptList = new ArrayList<>();
-        try(
-            PreparedStatement pstmt = conn.prepareStatement("select * from department");
-            ResultSet rs = pstmt.executeQuery();){
-
-                while(rs.next()){
-                    int id = rs.getInt("id");
-                    String name = rs.getString("first_name");
-                    String address = rs.getString("last_name");
-                    String phone = rs.getString("phone");
-                    int budget = rs.getInt("budget");
-                    Department dept = new Department(name, address, phone, budget);
-                    dept.setId(id);
-                    deptList.add(dept);
-                }
-
-            
-        }catch(SQLException e){
-            e.getStackTrace();
-        }
-
-        return deptList;
-
-    }
-
-    @Override
-    public Department getDepartmentById(int id) throws DepartmentNotFoundException {
-        ResultSet rs = null;
-		try(PreparedStatement pstmt = conn.prepareStatement("select * from department where id = ?");
-				) {
-			
-			pstmt.setInt(1, id);
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-                int idFromDB = rs.getInt("id");
-                String name = rs.getString("first_name");
-                String address = rs.getString("last_name");
-                String phone = rs.getString("phone");
-                int budget = rs.getInt("budget");
-                Department dept = new Department(name, address, phone, budget);
-                dept.setId(idFromDB);
-                return dept;
+			while (rs.next()) {
+				
+				int deptId = rs.getInt("dept_id");
+				String name = rs.getString("dept_name");
+				String phone = rs.getString("dept_phone");
+				int budget = rs.getInt("budget");
+				
+				Department dept = new Department(name, phone, budget);
+				dept.setId(deptId);
+				deptList.add(dept);
 
 			}
-			
 
-			
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		}
+		return deptList;
+	}
+
+	ResultSet rs = null;
+
+	@Override
+	public Department getDepartmentById(int deptId) {
+		try (PreparedStatement pstmt = conn.prepareStatement("select * from department where dept_id=?")) {
+			pstmt.setInt(1, deptId);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				int deptId1 = rs.getInt("dept_id");
+				String name = rs.getString("dept_name");
+				String phone = rs.getString("dept_phone");
+				int budget = rs.getInt("budget");
+
+				Department dept = new Department(name, phone, budget);
+				dept.setId(deptId1);
+				return dept;
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
 			try {
 				rs.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-        }
-        
-        throw new DepartmentNotFoundException(id);
-    }
+		}
 
-    @Override
-    public boolean addDepartment(Department dep) {
-        try(PreparedStatement pstmt = conn.prepareStatement("insert into department(values(?,?,?,?)")) {
-            
-            pstmt.setString(1, dep.getName());
-            pstmt.setString(2, dep.getAddress());
-            pstmt.setString(3, dep.getPhone());
-            pstmt.setInt(4, dep.getBudget());
+		return null;
+	}
 
 
-            int count =  pstmt.executeUpdate();
-            if(count > 0) {
-                return true;
-            }
+	@Override
+	public boolean addDepartment(Department dept) {
 
-        }catch(SQLException e) {
-//			e.printStackTrace();
-        }
-        
-        return false;
-    }
-
-    @Override
-    public boolean deleteDepartmentById(int id) {
-		try(PreparedStatement pstmt = conn.prepareStatement("delete department where id = ?")) {
+		try(PreparedStatement pstmt = conn.prepareStatement("insert into department values(null,?,?,?))")) {
 			
-			pstmt.setInt(1, id);
-
-			int count =  pstmt.executeUpdate();
+			pstmt.setString(1, dept.getName());
+			pstmt.setString(2, dept.getPhone());
+			pstmt.setInt(3,  dept.getBudget());
+			
+			int count = pstmt.executeUpdate();
 			if(count > 0) {
 				return true;
 			}
-
-		}catch(SQLException e) {
-//			e.printStackTrace();
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-		
-        return false;
-    }
+		return false;
+	}
+
+	@Override
+	public boolean deleteDepartmentById(int deptId) {
+		try(PreparedStatement pstmt = conn.prepareStatement("delete from department where dept_id=?")) {
+			
+			pstmt.setInt(1, deptId);
+						
+			int count = pstmt.executeUpdate();
+			if(count > 0) {
+				return true;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+			
+	}
 
     @Override
     public boolean updateDepartment(Department dep) {
         try(PreparedStatement pstmt = conn.prepareStatement("update department "
                                                                +  "set name = ?, "
-                                                                + "address = ?, "
                                                                 + "phone = ?, "
                                                                 + "budget = ? "
                                                                 + "WHERE id = ?")) {
 			
             pstmt.setString(1, dep.getName());
-            pstmt.setString(2, dep.getAddress());
-            pstmt.setString(3, dep.getPhone());
-            pstmt.setInt(4, dep.getBudget());
-            pstmt.setInt(5, dep.getId());
+            pstmt.setString(2, dep.getPhone());
+            pstmt.setInt(3, dep.getBudget());
+            pstmt.setInt(4, dep.getId());
 
 			int count =  pstmt.executeUpdate();
 			if(count > 0) {
@@ -149,5 +135,11 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 		
 		return false;
     }
+    
+    public void closeConnection() throws SQLException {
+		
+		conn.close();
+		
+	}
     
 }

@@ -27,7 +27,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             ResultSet rs = pstmt.executeQuery();){
 
                 while(rs.next()){
-                    int id = rs.getInt("emp_id");
+                    int empId = rs.getInt("emp_id");
                     String firstName = rs.getString("first_name");
                     String lastName = rs.getString("last_name");
                     String phone = rs.getString("phone");
@@ -35,7 +35,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
                     int salary = rs.getInt("salary");
                     int deptId = rs.getInt("dept_id");
                     Employee emp = new Employee(firstName, lastName, phone, title, salary, deptId);
-                    emp.setId(id);
+                    emp.setId(empId);
                     empList.add(emp);
                 }
 
@@ -57,7 +57,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-                int idFromDB = rs.getInt("id");
+                int idFromDB = rs.getInt("emp_id");
                 String firstName = rs.getString("first_name");
                 String lastName = rs.getString("last_name");
                 String phone = rs.getString("phone");
@@ -134,19 +134,21 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         try(PreparedStatement pstmt = conn.prepareStatement("update employee "
                                                                +  "set first_name = ?, "
                                                                 + "last_name = ?, "
+                                                                + "dept_id = ? "
+                                                                + "salary = ?, "
                                                                 + "phone = ?, "
                                                                 + "title = ?, "
-                                                                + "salary = ?, "
-                                                                + "dept_id = ? "
                                                                 + "WHERE id = ?")) {
 			
             pstmt.setString(1, emp.getFirstName());
             pstmt.setString(2, emp.getLastName());
-            pstmt.setString(3, emp.getPhone());
-            pstmt.setString(4, emp.getTitle());
-            pstmt.setInt(5, emp.getSalary());
-            pstmt.setInt(6, emp.getDeptId());
+            pstmt.setInt(3, emp.getDeptId());
+            pstmt.setInt(4, emp.getSalary());
+            pstmt.setString(5, emp.getPhone());
+            pstmt.setString(6, emp.getTitle());
             pstmt.setInt(7, emp.getId());
+            
+            
 
 			int count =  pstmt.executeUpdate();
 			if(count > 0) {

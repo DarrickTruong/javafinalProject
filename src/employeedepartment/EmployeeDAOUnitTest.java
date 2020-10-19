@@ -1,5 +1,6 @@
 package employeedepartment;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.sql.Connection;
@@ -12,7 +13,6 @@ import org.junit.Test;
 
 public class EmployeeDAOUnitTest {
 	private EmployeeDAO employeeDAO = new EmployeeDAOImpl();
-	private static DepartmentDAO deptDAO = new DepartmentDAOImpl();
 	private Connection conn = ConnManagerWithProps.getConnection();
 
 	@Before
@@ -29,23 +29,22 @@ public class EmployeeDAOUnitTest {
 		List<Employee> employees = employeeDAO.getAllEmployees();
 		System.out.println(employees.get(employees.size() - 1));
 		assertTrue(emp.getFirstName().equals(employees.get(employees.size() - 1).getFirstName()));
-
 	}
 
-//	@Test
-//	public void updateEmployee() {
-//		Employee emp;
-//		try {
-//			emp = employeeDAO.getEmployeeById(1);
-//			String oldLastName = emp.getLastName();
-//			emp.setLastName("Truong");
-//			assertEquals(emp.getLastName().equals(oldLastName), false);
-//			
-//		} catch (EmployeeNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.getMessage();
-//		}
-//	}
+	@Test
+	public void updateEmployee() {
+		Employee emp;
+		try {
+			emp = employeeDAO.getEmployeeById(1);
+			String oldLastName = emp.getLastName();
+			emp.setLastName("Truong");
+			assertFalse(emp.getLastName().equals(oldLastName));
+			
+		} catch (EmployeeNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.getMessage();
+		}
+	}
 
 	@After
 	public void closeConn() {

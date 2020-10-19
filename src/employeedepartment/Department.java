@@ -9,10 +9,10 @@ public class Department {
 	private String phone;
 	private int budget;
 	
-	public Department(String name, String address, String phone, int budget) {
+	public Department(String name, String phone, int budget) {
 		super();
+		
 		this.name = name;
-		this.address = address;
 		this.phone = phone;
 		this.budget = budget;
 		
@@ -28,46 +28,29 @@ public class Department {
 		this.name = name;
 	}
 
-
-	public String getAddress() {
-		return address;
-	}
-
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-
 	public String getPhone() {
 		return phone;
 	}
-
 
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
-
 	public int getBudget() {
 		return budget;
 	}
 
-
 	public void setBudget(int budget) {
 		this.budget = budget;
 	}
-
 	
 	public int getId() {
 		return id;
 	}
 
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 
 	@Override
 	public String toString() {
