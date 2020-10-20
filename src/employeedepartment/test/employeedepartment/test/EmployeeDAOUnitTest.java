@@ -28,8 +28,7 @@ public class EmployeeDAOUnitTest {
 
 	@Test
 	public void addEmployeeTest() {
-		
-		Employee emp = new Employee("Darrick", "Troung", "4081230965", "Professor", 50000, 1);
+		Employee emp = new Employee("Sarah", "Bean","4086501234", "Professor", 90000, 1);
 		employeeDAO.addEmployee(emp);
 
 		List<Employee> employees = employeeDAO.getAllEmployees();

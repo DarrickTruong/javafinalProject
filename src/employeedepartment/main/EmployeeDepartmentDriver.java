@@ -23,7 +23,8 @@ public class EmployeeDepartmentDriver {
 
 			while(!finished) {
 				try {
-					System.out.println("Do you want to input a Department or Employee? \n(Enter 1:Employee, 2:Department, 3:End)");
+					
+					System.out.println("\nDo you want to input a Department or Employee? \n(Enter 1:Employee, 2:Department, 3:End)");
 					String str = sc.nextLine();
 					if (str.equals("1")) {
 						System.out.println("What function would you like? \n(Enter 1: Display Employees, "
@@ -150,7 +151,7 @@ public class EmployeeDepartmentDriver {
 
 						}
 					} else if (str.equals("2")) {
-						System.out.println("What function would you like? \n(Enter 1: Display Departments, "
+						System.out.println("\nWhat function would you like? \n(Enter 1: Display Departments, "
 								+ "2: Add Department, 3: Edit Department, 4: Remove Department");
 						switch (str = sc.nextLine()) {
 						case "1": System.out.println("Would you like to see a list of Departments or Employees by Departments?"
@@ -184,7 +185,7 @@ public class EmployeeDepartmentDriver {
 								
 								  depDAO.addDepartment(new Department(name, phone, budget));
 							      break;
-						case "3": System.out.println("What is the ID of the Department?");
+						case "3": System.out.println("\nWhat is the ID of the Department?");
 								  boolean broke = false;
 						          int depID = Integer.valueOf(sc.nextLine());
 									Department dep=null;
@@ -224,7 +225,7 @@ public class EmployeeDepartmentDriver {
 						        	  }
 						          }
 						          break;
-						case "4": System.out.println("What is the ID of the Department to remove:");
+						case "4": System.out.println("\nWhat is the ID of the Department to remove:");
 								dep=null;
 								try {
 								      depID = Integer.valueOf(sc.nextLine());
